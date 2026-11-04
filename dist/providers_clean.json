@@ -20,32 +20,20 @@
     "Category": "Mortgage Lender",
     "Specialty": "",
     "Service_Area": "Off Cook Rd.",
-    "Testimonial": "Patient & Proffesional",
+    "Testimonial": "Patient & Professional",
     "Rating": 4
   },
   {
     "Company": "Aardvark Home Inspectors, Inc.",
-    "Contact": "Cory Ade",
+    "Contact": "",
     "email": "customercare@aardvarkfortwayne.com",
     "number": "",
     "Main Location": "46818",
     "Category": "Home Inspector",
     "Specialty": "General Inspections",
     "Service_Area": "Fort Wayne area",
-    "Testimonial": "Personal Favorite- Call Michael to Schedule",
-    "Rating": 5
-  },
-  {
-    "Company": "Better Organized Spaces Fort Wayne",
-    "Contact": "Jason Spuller",
-    "email": "jason@betterorgspaces.com",
-    "number": "(260) 444-2459",
-    "Main Location": "46845",
-    "Category": "Home Services",
-    "Specialty": "Provides custom storage and organization solutions for homes",
-    "Service_Area": "Fort Wayne area",
     "Testimonial": "",
-    "Rating": 4
+    "Rating": 5
   },
   {
     "Company": "Titus and Son's Electric",
@@ -84,18 +72,6 @@
     "Rating": 4
   },
   {
-    "Company": "Centurion Land Title",
-    "Contact": "Brittany Grabner",
-    "email": "brittany@centurionlandtitle.com",
-    "number": "(260) 385-8000",
-    "Main Location": "46825",
-    "Category": "Title Company",
-    "Specialty": "",
-    "Service_Area": "Fort Wayne area",
-    "Testimonial": "",
-    "Rating": 4
-  },
-  {
     "Company": "Metropolitan Title",
     "Contact": "Leah Graham",
     "email": "lgraham@metrotci.com",
@@ -127,18 +103,6 @@
     "Main Location": "46845",
     "Category": "Mortgage Lender",
     "Specialty": "Residential and Commercial Lending",
-    "Service_Area": "Fort Wayne area",
-    "Testimonial": "",
-    "Rating": 4
-  },
-  {
-    "Company": "Ruoff Mortgage",
-    "Contact": "Mike Ruiz",
-    "email": "mike.ruiz@ruoff.com",
-    "number": "260-402-4610",
-    "Main Location": "46835",
-    "Category": "Mortgage Lender",
-    "Specialty": "",
     "Service_Area": "Fort Wayne area",
     "Testimonial": "",
     "Rating": 4
@@ -240,18 +204,6 @@
     "Rating": 4
   },
   {
-    "Company": "Fire & Ice HVAC",
-    "Contact": "Service Team",
-    "email": "info@fireicehvac.com",
-    "number": "(260) 250-3990",
-    "Main Location": "46748",
-    "Category": "HVAC",
-    "Specialty": "Locally owned, furnace & AC services",
-    "Service_Area": "Fort Wayne and Allen County",
-    "Testimonial": "Fort Wayne's expert heating and cooling company",
-    "Rating": 4
-  },
-  {
     "Company": "Steve's",
     "Contact": "Contact Michael For Info",
     "email": "",
@@ -324,18 +276,6 @@
     "Rating": 5
   },
   {
-    "Company": "Centurion Exteriors",
-    "Contact": "Lester Crews",
-    "email": "",
-    "number": "(260) 619-7004",
-    "Main Location": "46825",
-    "Category": "Roofing",
-    "Specialty": "Roof/Window and Door Replacement",
-    "Service_Area": "Tri-State Area | Fort Wayne Local",
-    "Testimonial": "We are very pleased with our new roof. We definitely recommend them to anyone needing roof work or windows.",
-    "Rating": 4
-  },
-  {
     "Company": "Community State Bank",
     "Contact": "Leo Phillips",
     "email": "leop@csbemail.com",
@@ -384,4 +324,3 @@
     "Rating": 5
   }
 ]
-
