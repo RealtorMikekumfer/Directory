@@ -12,23 +12,17 @@ The editor is a local draft tool, not a password-protected admin backend. Visito
 
 ## Your client link
 
-https://kumfer-home-directory.kumferrealestate.chatgpt.site/
+https://realtormikekumfer.github.io/Directory/
 
 The client directory and manager load **dist/providers_clean.json** directly from this public GitHub repository when opened or refreshed. Commit list changes here, then refresh the client link. GitHub caching can take a few minutes. No new client link or app redeployment is needed for provider-list changes.
 
 If GitHub is temporarily unreachable, the public directory shows the bundled copy with a visible notice. The manager requires the current GitHub list before editing, to avoid replacing newer data with an old copy.
 
-Code and design changes still need a deployment of the client Site. Automatic list updates apply to providers_clean.json. Contact configuration changes in config.json need deployment too.
+Code, design and contact configuration changes publish automatically through the GitHub Pages workflow after a commit to main. Provider-list changes are also read directly from the repository.
 
-## Optional GitHub Pages hosting
+## GitHub Pages hosting\n\nGitHub Pages is enabled with GitHub Actions as its source. The **Check and publish directory** workflow validates each change to main and deploys the dist folder. The public app runs independently of ChatGPT and requires no visitor sign-in.\n\nRequested branded Short.io link: `https://kumfer.me/Directory`. Its Short.io destination still needs to be connected to the GitHub Pages URL above. Existing Short.io links and IONOS DNS should be preserved.\n\n## Updating providers throughout your career
 
-The included workflow validates changes to main. The existing client link works without enabling GitHub Pages.
-
-For an additional GitHub Pages deployment, open repository Settings → Pages and select **GitHub Actions** as Source. Then run **Check and publish directory** from Actions, or commit another change. Once enabled, future commits to main deploy the dist folder automatically.
-
-## Updating providers throughout your career
-
-Open the directory → Manage directory. Edit or add providers. Download the list. Open your GitHub repository, replace dist/providers_clean.json and commit. Or edit that JSON file directly in GitHub. Refresh the client link after committing; allow a few minutes for GitHub caching. The repository workflow checks each change and deploys GitHub Pages too if that optional hosting is enabled.
+Open the directory → Manage directory. Edit or add providers. Download the list. Open your GitHub repository, replace dist/providers_clean.json and commit. Or edit that JSON file directly in GitHub. Refresh the client link after committing; allow a few minutes for GitHub caching. The repository workflow checks each change and deploys GitHub Pages automatically.
 
 Fields: Company, Contact, email, number, Main Location, Category, Specialty, Service_Area, Testimonial, Rating. Existing categories are preserved. Handyman and insurance are surfaced as separate filters when identified in a company name. New categories are picked up automatically.
 
