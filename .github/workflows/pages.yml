@@ -1,0 +1,55 @@
+name: Check and publish directory
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    outputs:
+      pages_enabled: ${{ steps.pages.outputs.enabled }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate directory
+        run: node scripts/check.mjs
+      - name: Check optional GitHub Pages hosting
+        id: pages
+        uses: actions/github-script@v7
+        with:
+          script: |
+            try {
+              const {data} = await github.rest.repos.getPages({...context.repo});
+              const enabled = data.build_type === 'workflow';
+              core.setOutput('enabled', String(enabled));
+              if (!enabled) core.summary.addRaw('Optional GitHub Pages: select GitHub Actions in Settings → Pages. The existing client link already reads provider updates from this repository.').write();
+            } catch (error) {
+              if (error.status !== 404) throw error;
+              core.setOutput('enabled', 'false');
+              core.summary.addRaw('GitHub Pages is optional and is not enabled. The existing client link already reads provider updates from this repository.').write();
+            }
+  deploy:
+    needs: validate
+    if: needs.validate.outputs.pages_enabled == 'true'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
