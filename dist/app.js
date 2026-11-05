@@ -5,6 +5,7 @@ const icons = {
  bookmark:'<path d="M6 21V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17l-6-4z"/>',
  share:'<path d="M12 16V3m-4 4 4-4 4 4M5 13v7h14v-7"/>',
  phone:'<path d="M8 3 5 4c-2 1-1 7 3 11s10 5 11 3l1-3-5-2-2 2c-2-1-3-2-4-4l2-2z"/>',
+ message:'<path d="M21 11a8 8 0 0 1-8 8H7l-4 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/><path d="M7 8h10M7 12h7"/>',
  mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/>',
  pin:'<path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/>',
  home:'<path d="m3 11 9-8 9 8M5 10v11h14V10M9 21v-8h6v8"/>',
@@ -20,13 +21,17 @@ const icons = {
 };
 const icon=(name)=>`<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">${icons[name]||icons.home}</svg>`;
 const esc=(str='')=>String(str).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const idFor=(p)=>`${p.Company}-${p.Contact}`.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+const idFor=(p)=>typeof p.ID==='string'&&/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(p.ID)?p.ID:`${p.Company}-${p.Contact}`.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const group=(p)=>/handyman/i.test(p.Company)?'Handyman':/insurance/i.test(p.Company)?'Insurance':p.Category;
 const glyph=(cat)=>({'Mortgage Lender':'lender','Electrician':'bolt','HVAC':'hvac','Handyman':'tools','Home Inspector':'inspect','Plumbing':'plumbing','Landscaping':'leaf','Title Company':'title','Roofing':'home','Insurance':'title'}[cat]||'home');
 const label=(cat)=>({'Mortgage Lender':'Lenders','Electrician':'Electricians','Home Inspector':'Inspections','Home Services':'Home services','Title Company':'Title companies'}[cat]||cat);
 const phoneFor=(p)=>{const n=String(p.number||'').replace(/\D/g,'').replace(/^1(?=\d{10}$)/,'');return /^\d{10}$/.test(n)&&!/^\d{3}55501\d{2}$/.test(n)?`+1${n}`:'';};
-const emailFor=(p)=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(p.email||'')?p.email:'';
+const emailFor=(p)=>{const email=String(p.email||'').trim();return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)?email:'';};
+const messageFor=(company='')=>`Hi Michael, I'm looking at your Fort Wayne Home Repairs & Services Directory${company?` and would like more information about ${company}.`:'. Can you help me find the right provider?'}`;
+const smsFor=(number,company='',apple=false)=>{const phone=phoneFor({number});return phone?`sms:${phone}${apple?'&':'?'}body=${encodeURIComponent(messageFor(company))}`:'';};
 let providers=[],config={},saved=new Set(),savedOnly=false,activeId=null;
+// Apple's Messages handler uses an ampersand for the prefilled message body.
+const appleSMS=/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent);
 try{const raw=JSON.parse(localStorage.getItem('kumfer-saved-v1')||'[]');if(Array.isArray(raw))saved=new Set(raw.filter(x=>typeof x==='string'));}catch{}
 let toastTimer;
 function toast(message){$('#toast').textContent=message;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),3500);}
@@ -43,28 +48,28 @@ function render(){
  document.querySelectorAll('.service-tile').forEach(b=>b.setAttribute('aria-pressed',b.dataset.category===category));
  $('#providers').innerHTML=list.map(p=>{
  const id=idFor(p),cat=group(p),phone=phoneFor(p),email=emailFor(p);
- return `<article class="provider-card"><div class="card-top"><span class="category-label">${icon(glyph(cat))}${esc(cat)}</span><button class="icon-button bookmark" data-save="${id}" aria-label="${saved.has(id)?'Unsave':'Save'} ${esc(p.Company)}" aria-pressed="${saved.has(id)}">${icon('bookmark')}</button></div><h3>${esc(p.Company)}</h3><p class="contact-name">${esc(p.Contact||'Contact the team')}</p><p class="card-specialty">${esc(p.Specialty||`${cat} · Contact for service details.`)}</p><p class="card-location">${icon('pin')}<span>${esc(p.Service_Area||p['Main Location']||'Contact for service area')}</span></p><div class="card-actions">${phone?`<a class="button primary" href="tel:${phone}" aria-label="Call ${esc(p.Company)}">${icon('phone')} Call ${esc(p.Contact&&p.Contact!=='Service Team'?p.Contact.split(' ')[0]:'the team')}</a>`:email?`<a class="button primary" href="mailto:${esc(email)}">${icon('mail')} Email contact</a>`:`<a class="button primary" href="tel:+1${config.phone}">${icon('phone')} Ask Michael</a>`}<button class="button detail-button" data-details="${id}" aria-label="View details for ${esc(p.Company)}">Details ${icon('info')}</button></div></article>`;
+ return `<article class="provider-card"><div class="card-top"><span class="category-label">${icon(glyph(cat))}${esc(cat)}</span><button class="icon-button bookmark" data-save="${id}" aria-label="${saved.has(id)?'Unsave':'Save'} ${esc(p.Company)}" aria-pressed="${saved.has(id)}">${icon('bookmark')}</button></div><h3>${esc(p.Company)}</h3><p class="contact-name">${esc(p.Contact||'Contact the team')}</p><p class="card-specialty">${esc(p.Specialty||`${cat} · Contact for service details.`)}</p><p class="card-location">${icon('pin')}<span>${esc(p.Service_Area||p['Main Location']||'Contact for service area')}</span></p><div class="card-actions">${phone?`<a class="button primary" href="tel:${phone}" aria-label="Call ${esc(p.Company)}">${icon('phone')} Call ${esc(p.Contact&&p.Contact!=='Service Team'?p.Contact.split(' ')[0]:'the team')}</a>`:email?`<a class="button primary" href="mailto:${esc(email)}">${icon('mail')} Email contact</a>`:`<a class="button primary" href="${esc(smsFor(config.phone,p.Company,appleSMS))}">${icon('message')} Text Michael</a>`}<button class="button detail-button" data-details="${id}" aria-label="View details for ${esc(p.Company)}">Details ${icon('info')}</button></div></article>`;
  }).join('');
 }
 function reset(){savedOnly=false;$('#search').value='';$('#category').value='';render();}
 function showDetails(id,open=true){
  const p=providers.find(x=>idFor(x)===id);if(!p)return;activeId=id;
  const cat=group(p),phone=phoneFor(p),email=emailFor(p);
- $('#detailBody').innerHTML=`<span class="category-label">${icon(glyph(cat))}${esc(cat)}</span><h2 class="detail-title" id="detailTitle">${esc(p.Company)}</h2><p class="contact-name">${esc(p.Contact)}</p>${p.Specialty?`<section class="detail-section"><h3>Services</h3><p>${esc(p.Specialty)}</p></section>`:''}<section class="detail-section"><h3>Service area</h3><p>${esc(p.Service_Area||'Contact to confirm')}${p['Main Location']?` · ${esc(p['Main Location'])}`:''}</p></section>${p.Testimonial?`<section class="detail-section"><h3>From the directory</h3><blockquote>${esc(p.Testimonial)}</blockquote></section>`:''}<div class="detail-links">${phone?`<a class="button primary" href="tel:${phone}">${icon('phone')} ${esc(p.number)}</a>`:''}${email?`<a class="button outline" href="mailto:${esc(email)}">${icon('mail')} ${esc(email)}</a>`:''}${!phone?`<a class="button ${email?'outline':'primary'}" href="tel:+1${config.phone}">${icon('phone')} Ask Michael for help</a>`:''}<button class="button outline" data-save="${id}">${icon('bookmark')} ${saved.has(id)?'Remove from saved':'Save to my list'}</button><button class="button outline" data-share="${id}">${icon('share')} Share contact</button>${phone||email?`<button class="text-button" data-vcard="${id}">Add to phone contacts <span aria-hidden="true">↓</span></button>`:''}</div><p class="detail-note">${p.number&&!phone?'A phone number in the original list needs confirmation. ':''}Confirm details directly with the provider. Directory notes are imported recommendations, not independently verified reviews.</p>`;
+ $('#detailBody').innerHTML=`<span class="category-label">${icon(glyph(cat))}${esc(cat)}</span><h2 class="detail-title" id="detailTitle">${esc(p.Company)}</h2><p class="contact-name">${esc(p.Contact)}</p>${p.Specialty?`<section class="detail-section"><h3>Services</h3><p>${esc(p.Specialty)}</p></section>`:''}<section class="detail-section"><h3>Service area</h3><p>${esc(p.Service_Area||'Contact to confirm')}${p['Main Location']?` · ${esc(p['Main Location'])}`:''}</p></section>${p.Testimonial?`<section class="detail-section"><h3>From the directory</h3><blockquote>${esc(p.Testimonial)}</blockquote></section>`:''}<div class="detail-links">${phone?`<a class="button primary" href="tel:${phone}">${icon('phone')} ${esc(p.number)}</a>`:''}${email?`<a class="button outline" href="mailto:${esc(email)}">${icon('mail')} ${esc(email)}</a>`:''}${!phone?`<a class="button ${email?'outline':'primary'}" href="${esc(smsFor(config.phone,p.Company,appleSMS))}">${icon('message')} Text Michael for help</a>`:''}<button class="button outline" data-save="${id}">${icon('bookmark')} ${saved.has(id)?'Remove from saved':'Save to my list'}</button><button class="button outline" data-share="${id}">${icon('share')} Share contact</button>${phone||email?`<button class="text-button" data-vcard="${id}">Add to phone contacts <span aria-hidden="true">↓</span></button>`:''}</div><p class="detail-note">${p.number&&!phone?'A phone number in the original list needs confirmation. ':''}Confirm details directly with the provider. Directory notes are imported recommendations, not independently verified reviews.</p>`;
  if(open&&!$('#details').open){$('#details').showModal();$('#closeDetails').focus();}
 }
 async function share(url,title){
  try{if(navigator.share){await navigator.share({title,url});return;}if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(url);toast('Link copied. Ready to share.');return;}}catch(e){if(e.name==='AbortError')return;}
  window.prompt('Copy this link to share:',url);
 }
-function downloadContact(id){const p=providers.find(x=>idFor(x)===id);if(!p)return;const safe=s=>String(s||'').replace(/\\/g,'\\\\').replace(/\n/g,'\\n').replace(/,/g,'\\,').replace(/;/g,'\\;');const text=['BEGIN:VCARD','VERSION:3.0',`FN:${safe(p.Contact||p.Company)}`,`ORG:${safe(p.Company)}`,phoneFor(p)?`TEL;TYPE=WORK:${phoneFor(p)}`:'',emailFor(p)?`EMAIL:${safe(p.email)}`:'','END:VCARD'].filter(Boolean).join('\r\n')+'\r\n';const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'text/vcard'}));a.download=`${id}.vcf`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);}
+function downloadContact(id){const p=providers.find(x=>idFor(x)===id);if(!p)return;const safe=s=>String(s||'').replace(/\\/g,'\\\\').replace(/\n/g,'\\n').replace(/,/g,'\\,').replace(/;/g,'\\;');const text=['BEGIN:VCARD','VERSION:3.0',`FN:${safe(p.Contact||p.Company)}`,`ORG:${safe(p.Company)}`,phoneFor(p)?`TEL;TYPE=WORK:${phoneFor(p)}`:'',emailFor(p)?`EMAIL:${safe(emailFor(p))}`:'','END:VCARD'].filter(Boolean).join('\r\n')+'\r\n';const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'text/vcard'}));a.download=`${id}.vcf`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);}
 async function load(){
  $('#error').classList.add('hidden');$('#empty').classList.add('hidden');
  try{
  const {data,settings,isLive}=await DirectoryData.load();
  $('#dataNotice').classList.toggle('hidden',isLive);
  providers=data;config=settings;
- document.querySelectorAll('.mike-call').forEach(a=>a.href=`tel:+1${config.phone}`);document.querySelectorAll('.mike-email').forEach(a=>a.href=`mailto:${config.email}`);
+ document.querySelectorAll('.mike-text').forEach(a=>a.href=smsFor(config.phone,'',appleSMS));document.querySelectorAll('.mike-email').forEach(a=>a.href=`mailto:${config.email}`);
  const selected=$('#category').value;$('#category').innerHTML='<option value="">All services</option>'+[...new Set(data.map(group))].sort((a,b)=>label(a).localeCompare(label(b))).map(cat=>`<option value="${esc(cat)}">${esc(label(cat))}</option>`).join('');$('#category').value=selected;
  const quick=['Mortgage Lender','HVAC','Electrician','Handyman','Plumbing','Home Inspector'];$('#quickServices').innerHTML=quick.map(cat=>`<button class="service-tile" data-category="${cat}" aria-pressed="false">${icon(glyph(cat))}${label(cat)}</button>`).join('');
  render();const deep=new URLSearchParams(location.hash.slice(1)).get('provider');if(deep)showDetails(deep);
@@ -79,4 +84,5 @@ $('#closeDetails').addEventListener('click',()=>$('#details').close());$('#detai
 document.addEventListener('keydown',e=>{if(e.key==='/'&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)&&!$('#details').open){e.preventDefault();$('#search').focus();}});
 window.addEventListener('hashchange',()=>{const id=new URLSearchParams(location.hash.slice(1)).get('provider');if(id)showDetails(id);});
 hydrateIcons();load();
+
 
