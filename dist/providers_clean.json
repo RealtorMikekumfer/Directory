@@ -6,22 +6,23 @@
     "number": "(260) 739-9590",
     "Main Location": "46804",
     "Category": "Electrician",
-    "Specialty": "Electrical Repair & Installation",
+    "Specialty": "Electrical repairs and installation.",
     "Service_Area": "Fort Wayne area",
-    "Testimonial": "Professional, punctual and good work.",
+    "Testimonial": "Professional, punctual, and does good work.",
     "Rating": 5
   },
   {
     "Company": "VSI Home Lending",
-    "Contact": "Dave Gibbson",
+    "Contact": "Dave Gibson",
     "email": "dgibson.vsi@polarishfc.com",
     "number": "(260) 418-9355",
     "Main Location": "46825",
     "Category": "Mortgage Lender",
-    "Specialty": "",
-    "Service_Area": "Off Cook Rd.",
-    "Testimonial": "Patient & Professional",
-    "Rating": 4
+    "Specialty": "Mortgage lending. Contact Dave to discuss your financing options.",
+    "Service_Area": "Fort Wayne area",
+    "Testimonial": "Patient and professional.",
+    "Rating": 4,
+    "ID": "vsi-home-lending-dave-gibbson"
   },
   {
     "Company": "Aardvark Home Inspectors, Inc.",
@@ -30,7 +31,7 @@
     "number": "",
     "Main Location": "46818",
     "Category": "Home Inspector",
-    "Specialty": "General Inspections",
+    "Specialty": "Home inspections.",
     "Service_Area": "Fort Wayne area",
     "Testimonial": "",
     "Rating": 5
@@ -42,9 +43,9 @@
     "number": "(260) 336-4663",
     "Main Location": "46714",
     "Category": "Electrician",
-    "Specialty": "Residential & commercial electricl services. Including emergency calls",
+    "Specialty": "Residential and commercial electrical services. Contact for emergency availability.",
     "Service_Area": "Northern Indiana",
-    "Testimonial": "Licenced & insured with free easy quotes. Great communication from the first call to finishing the project.",
+    "Testimonial": "Clear communication from the first call through project completion.",
     "Rating": 5
   },
   {
@@ -54,9 +55,9 @@
     "number": "707-527-2277",
     "Main Location": "46825",
     "Category": "Home Inspector",
-    "Specialty": "100 day guarantee complete inspections",
+    "Specialty": "Home inspections. Contact Michael Foust for current guarantee details.",
     "Service_Area": "Fort Wayne area",
-    "Testimonial": "Very helpful and informative! Personally showed us what isssues to look out for and explained how it could be fixed",
+    "Testimonial": "Helpful and informative, with clear explanations of issues and possible repairs.",
     "Rating": 5
   },
   {
@@ -66,9 +67,9 @@
     "number": "260-458-4184",
     "Main Location": "46818",
     "Category": "Home Inspector",
-    "Specialty": "",
+    "Specialty": "Water, radon, and mold testing.",
     "Service_Area": "Fort Wayne area",
-    "Testimonial": "Water Radon & Mold Testing",
+    "Testimonial": "",
     "Rating": 4
   },
   {
@@ -78,22 +79,23 @@
     "number": "(260) 705-1418",
     "Main Location": "46825",
     "Category": "Title Company",
-    "Specialty": "",
+    "Specialty": "Title services for real estate transactions.",
     "Service_Area": "Fort Wayne area",
-    "Testimonial": "Personal Favorite",
+    "Testimonial": "One of my preferred title contacts.",
     "Rating": 5
   },
   {
-    "Company": "Approved Mortgagee",
+    "Company": "Approved Mortgage",
     "Contact": "Adam Quaintance",
     "email": "aquaintance@approvedmortgage.com",
     "number": "419-487-3040",
     "Main Location": "46748",
     "Category": "Mortgage Lender",
-    "Specialty": "Specialty Mortgage Options",
-    "Service_Area": "Fort Wayne and Surrounding",
+    "Specialty": "Mortgage financing options. Contact Adam to discuss your situation.",
+    "Service_Area": "Fort Wayne and surrounding areas",
     "Testimonial": "",
-    "Rating": 4
+    "Rating": 4,
+    "ID": "approved-mortgagee-adam-quaintance"
   },
   {
     "Company": "Union Home Mortgage",
@@ -102,7 +104,7 @@
     "number": "201-394-8763",
     "Main Location": "46845",
     "Category": "Mortgage Lender",
-    "Specialty": "Residential and Commercial Lending",
+    "Specialty": "Mortgage lending. Contact Luke for current loan options.",
     "Service_Area": "Fort Wayne area",
     "Testimonial": "",
     "Rating": 4
@@ -114,22 +116,23 @@
     "number": "260-385-4588",
     "Main Location": "46801",
     "Category": "Mortgage Lender",
-    "Specialty": "",
+    "Specialty": "Mortgage lending.",
     "Service_Area": "Fort Wayne area",
-    "Testimonial": "Great communication and very digestable information. Always available",
+    "Testimonial": "Clear communication and information that is easy to understand.",
     "Rating": 5
   },
   {
-    "Company": "Independant Roofing Contractor",
+    "Company": "Independent Roofing Contractor",
     "Contact": "Rick Collins",
     "email": "",
     "number": "(260) 645-0132",
     "Main Location": "46818",
     "Category": "Home Inspector",
-    "Specialty": "Certified Professional Inspector. Used by Graber Roofing Company",
+    "Specialty": "Roof inspections. Contact Rick for project details.",
     "Service_Area": "Fort Wayne, Leo, Auburn, New Haven, Huntertown, Churubusco",
-    "Testimonial": "Top-rated roof inspection",
-    "Rating": 4
+    "Testimonial": "Recommended for roof inspections.",
+    "Rating": 4,
+    "ID": "independant-roofing-contractor-rick-collins"
   },
   {
     "Company": "Intteg Home Inspection",
@@ -138,9 +141,9 @@
     "number": "(260) 750-1115",
     "Main Location": "46805",
     "Category": "Home Inspector",
-    "Specialty": "500-point inspection, over 1000 inspections completed",
+    "Specialty": "Home inspections.",
     "Service_Area": "Northern Indiana",
-    "Testimonial": "Go-to-guy. Quality Work",
+    "Testimonial": "A go-to contact for quality work.",
     "Rating": 5
   },
   {
@@ -150,9 +153,9 @@
     "number": "(260) 582-6039",
     "Main Location": "46845",
     "Category": "Home Inspector",
-    "Specialty": "Structural Engineer",
+    "Specialty": "Structural engineering services.",
     "Service_Area": "Fort Wayne area",
-    "Testimonial": "Extremely Reliable & Top Rated",
+    "Testimonial": "Reliable.",
     "Rating": 5
   },
   {
@@ -162,9 +165,9 @@
     "number": "(260) 582-2240",
     "Main Location": "Fort Wayne",
     "Category": "Home Services",
-    "Specialty": "Free estimate insulation solutions designed to enhance energy efficiency, interior comfort, and environmental sustainability.",
-    "Service_Area": "Fort Wayne & Surrounding Areas",
-    "Testimonial": "Highly rated for professionalism, efficiency, clear communication, and reliability",
+    "Specialty": "Insulation services to improve home comfort and energy efficiency.",
+    "Service_Area": "Fort Wayne and surrounding areas",
+    "Testimonial": "Professional service and clear communication.",
     "Rating": 5
   },
   {
@@ -174,9 +177,9 @@
     "number": "(260) 387-9664",
     "Main Location": "46825",
     "Category": "Plumbing",
-    "Specialty": "24/7 emergency service, residential & commercial",
+    "Specialty": "Residential and commercial plumbing repairs and installations.",
     "Service_Area": "Fort Wayne and surrounding areas",
-    "Testimonial": "Licensed plumbers ready to help with any plumbing need",
+    "Testimonial": "Licensed plumbing contractor.",
     "Rating": 5
   },
   {
@@ -186,9 +189,9 @@
     "number": "(260) 226-0614",
     "Main Location": "46825",
     "Category": "Plumbing",
-    "Specialty": "Licensed & Insured. Bath remodels, water heater/softner replacement, leaks, sump pumps, etc.",
+    "Specialty": "Bathroom remodels, water heater and water softener replacement, leak repairs, and sump pumps.",
     "Service_Area": "Fort Wayne and surrounding areas",
-    "Testimonial": "Highly-rated local with over 25 years of experience",
+    "Testimonial": "Residential plumbing repairs and replacements.",
     "Rating": 4
   },
   {
@@ -198,9 +201,9 @@
     "number": "(260) 483-0572",
     "Main Location": "46805",
     "Category": "Plumbing",
-    "Specialty": "95+ years in business, A+ BBB rating",
+    "Specialty": "Plumbing and heating services.",
     "Service_Area": "Northeast Indiana",
-    "Testimonial": "Established 1929 - experienced and quality work",
+    "Testimonial": "Established in 1929.",
     "Rating": 4
   },
   {
@@ -210,21 +213,21 @@
     "number": "",
     "Main Location": "46825",
     "Category": "Roofing",
-    "Specialty": "Quality Roof Replacement For A Great Value",
+    "Specialty": "Roof replacement.",
     "Service_Area": "Northern Indiana",
-    "Testimonial": "400+ projects complete. Trusted Highly",
+    "Testimonial": "Recommended for roof replacement projects.",
     "Rating": 5
   },
   {
     "Company": "Bone Dry Roofing",
     "Contact": "Service Team",
     "email": "info@bonedry.com",
-    "number": "(260) 555-0128",
-    "Main Location": "46825",
+    "number": "(260) 267-6189",
+    "Main Location": "46808",
     "Category": "Roofing",
-    "Specialty": "Full exterior services, ice melt systems",
+    "Specialty": "Roofing repairs and replacement, plus exterior services.",
     "Service_Area": "Fort Wayne area",
-    "Testimonial": "Comprehensive roofing and exterior solutions",
+    "Testimonial": "Roofing and exterior services for homes and businesses.",
     "Rating": 4
   },
   {
@@ -234,9 +237,9 @@
     "number": "(260) 580-7658",
     "Main Location": "46748",
     "Category": "Landscaping",
-    "Specialty": "Fencing, decks, hardscapes since 2013",
+    "Specialty": "Decks, fences, and hardscaping.",
     "Service_Area": "Huntertown and Allen County",
-    "Testimonial": "Premier deck, fence, and hardscaping experts",
+    "Testimonial": "Outdoor construction and hardscaping services.",
     "Rating": 4
   },
   {
@@ -246,21 +249,21 @@
     "number": "(260) 450-5156",
     "Main Location": "46748",
     "Category": "Landscaping",
-    "Specialty": "Custom turf management and maintenance",
+    "Specialty": "Custom lawn and turf maintenance.",
     "Service_Area": "Fort Wayne and surrounding areas",
-    "Testimonial": "Professional turf management solutions",
+    "Testimonial": "Professional turf management.",
     "Rating": 4
   },
   {
     "Company": "Environmental Management Specialists",
     "Contact": "Service Team",
-    "email": "info@emsclean.com",
+    "email": "info@ems-us.net",
     "number": "(260) 637-9414",
     "Main Location": "46748",
     "Category": "Home Services",
-    "Specialty": "Mold, asbestos, lead removal since 1990",
+    "Specialty": "Mold, asbestos, and lead removal.",
     "Service_Area": "Northeast Indiana",
-    "Testimonial": "Cost-effective environmental solutions since 1990",
+    "Testimonial": "Environmental cleanup and remediation services since 1990.",
     "Rating": 4
   },
   {
@@ -270,9 +273,9 @@
     "number": "(260) 327-4100",
     "Main Location": "46748",
     "Category": "Home Services",
-    "Specialty": "Home & Auto Insurance",
+    "Specialty": "Home and auto insurance.",
     "Service_Area": "Huntertown",
-    "Testimonial": "Lowered my debt-to-income ratio by beating my insurance quotes!",
+    "Testimonial": "He helped me compare insurance quotes and lower my insurance costs.",
     "Rating": 5
   },
   {
@@ -282,9 +285,9 @@
     "number": "(260) 402-4284",
     "Main Location": "46845",
     "Category": "Mortgage Lender",
-    "Specialty": "Business- Portfolio Loans | Bridge Loans | No Score Loans. Residential- FHA | VA | USDA | Conventional | Local Grant Program Knowledge",
-    "Service_Area": "North East Indiana",
-    "Testimonial": "Works well with investors",
+    "Specialty": "Mortgage and business financing. Contact Leo for current loan programs and local assistance options.",
+    "Service_Area": "Northeast Indiana",
+    "Testimonial": "Works well with investors.",
     "Rating": 5
   },
   {
@@ -294,9 +297,9 @@
     "number": "(260) 205-2478",
     "Main Location": "46748",
     "Category": "Home Services",
-    "Specialty": "Versatile range of work- General contractor with licenced crew",
+    "Specialty": "General contracting and home renovation services.",
     "Service_Area": "Allen County",
-    "Testimonial": "They did a great job rehabing my fix & flip",
+    "Testimonial": "They did good work on my fix and flip renovation.",
     "Rating": 5
   },
   {
@@ -306,9 +309,9 @@
     "number": "(260) 615-5156",
     "Main Location": "46748",
     "Category": "Landscaping",
-    "Specialty": "Full-service lawn mowing -landscaping design and installation -yard repair and grading",
+    "Specialty": "Lawn mowing, landscape design and installation, yard repairs, and grading.",
     "Service_Area": "Huntertown (extends into adjacent Fort Wayne neighborhoods)",
-    "Testimonial": "5-star rating -professional brothers who communicate clearly, arrive on time, and deliver perfection every time",
+    "Testimonial": "Clear communication, punctual arrivals, and quality work.",
     "Rating": 5
   },
   {
@@ -318,9 +321,9 @@
     "number": "(260) 625-5300",
     "Main Location": "46814",
     "Category": "HVAC",
-    "Specialty": " Heating & Air Conditioning Specialist",
+    "Specialty": "Heating and air conditioning service, repairs, and installation.",
     "Service_Area": "Fort Wayne",
-    "Testimonial": "5-star rating! He's Worked on multiple homes! I always reccomend Todd for being professional and fair.",
+    "Testimonial": "I recommend Todd for being professional and fair.",
     "Rating": 5
   }
 ]
